@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>점핑배틀</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <form id="reservationForm" novalidate>
+      <input type="hidden" id="walkInTime" name="walkInTime">
+
+      <div class="field">
+        <label for="teamName">팀명</label>
+        <input type="text" id="teamName" name="teamName" placeholder="팀명을 입력하세요" required>
+      </div>
+
+      <div class="field room-group">
+        <label>방 선택 <span class="note">(예약현황에 따라 변경될 수 있습니다 ^^)</span></label>
+        <div class="room-buttons">
+          <button type="button" data-value="B1">대형 (B1)</button>
+          <button type="button" data-value="A1">중형 (A1)</button>
+          <button type="button" data-value="C1">소형 (C1)</button>
+          <button type="button" data-value="C2">소형 (C2)</button>
+        </div>
+        <input type="hidden" id="roomSize" name="roomSize" required>
+      </div>
+
+      <div class="field-group">
+        <div class="field half">
+          <label for="adultCount">성인</label>
+          <input type="number" id="adultCount" name="adultCount" min="0" placeholder="0" required>
+        </div>
+        <div class="field half">
+          <label for="youthCount">청소년</label>
+          <input type="number" id="youthCount" name="youthCount" min="0" placeholder="0" required>
+        </div>
+      </div>
+
+      <div class="field difficulty-group">
+        <label>난이도 <span class="note">(처음이시라면 베이직,이지 추천!)</span></label>
+        <div class="difficulty-buttons">
+          <button type="button" data-value="ㅂ베이직">베이직</button>
+          <button type="button" data-value="ㅇ이지">이지</button>
+          <button type="button" data-value="ㄴ노멀">노멀</button>
+          <button type="button" data-value="ㅎ하드">하드</button>
+        </div>
+        <input type="hidden" id="difficulty" name="difficulty" required>
+      </div>
+
+      <div class="field">
+        <label for="vehicle">차량번호 뒤 4자리 (옵션)</label>
+        <input type="text" id="vehicle" name="vehicle" maxlength="4"
+               oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,4)"
+               placeholder="1234">
+      </div>
+
+      <button type="submit">전송하기</button>
+    </form>
+    <div id="result" class="result"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
