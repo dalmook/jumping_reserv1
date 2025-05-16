@@ -94,7 +94,7 @@ body {
     left: -3px;
     right: -3px;
     bottom: -3px;
-    background: linear-gradient(45deg, #f0f, #0ff, #f0f, #0ff);
+    background: linear-gradient(45deg, #f0f, rgb(28, 6, 138), #f0f, #0ff);
     background-size: 400%;
     border-radius: 8px;
     z-index: -1;
