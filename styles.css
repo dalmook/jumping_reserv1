@@ -172,7 +172,7 @@ button[type="submit"]::after {
 @media (max-width: 600px) {
   .container {
     width: 100%;
-    max-width: 100%;
+    max-width: 90%;
     padding: 20px;
     margin-top: 5px;
   }
