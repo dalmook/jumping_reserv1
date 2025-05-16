@@ -9,18 +9,17 @@ body {
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
 }
-
 .container {
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255,255,255,0.95);
-  padding: 20px;
+  padding: 30px;
   margin-top: 10px;
   border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
+  width: 95%;
+  max-width: 600px; /* 태블릿 대응 위해 확대 */
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -28,76 +27,52 @@ body {
 .field, .field-group {
   margin-bottom: 16px;
 }
-
 label {
   display: block;
   margin-bottom: 6px;
   font-weight: 600;
   color: #333;
 }
-
 label .note {
-  color: #d32f2f;
-  font-weight: normal;
+  color: #3F48CC;
+  font-style: italic;
 }
-
 input[type="text"], input[type="number"] {
   width: 100%;
-  padding: 8px;
-  font-size: 1rem;
+  padding: 12px;
+  font-size: 1.2rem; /* 폰트 크기 확대 */
   border: 1px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
 }
 
-.field-group {
-  display: flex;
-  gap: 4%;
-}
-.field-group .half {
-  width: 48%;
-}
-
+.field-group { display: flex; gap: 4%; }
+.field-group .half { width: 48%; }
 .room-buttons, .difficulty-buttons {
   display: flex;
   gap: 8px;
 }
-
 .room-buttons button, .difficulty-buttons button {
+  font-size: 1.1rem; /* 폰트 크기 조정 */
   flex: 1;
   padding: 8px 0;
   background: #fff;
-  border: 2px solid #007ACC;
+  border: 2px solid #ddd;
   border-radius: 6px;
-  color: #007ACC;
   font-weight: 600;
+  color: #333;
   cursor: pointer;
   transition: background 0.2s;
 }
-
-.room-buttons button:hover:not(:disabled),
-.difficulty-buttons button:hover:not(:disabled) {
-  background: #e6f0fa;
-}
-
-.room-buttons button.selected,
-.difficulty-buttons button.selected {
+.room-buttons button.selected, .difficulty-buttons button.selected {
   background: #007ACC;
   color: #fff;
+  border-color: #005A9E;
 }
-
-.room-buttons button:disabled,
-.difficulty-buttons button:disabled {
-  background: #f5f5f5;
-  border-color: #ccc;
-  color: #aaa;
-  cursor: not-allowed;
-}
-
 button[type="submit"] {
   width: 100%;
-  padding: 12px;
-  font-size: 1.05rem;
+  padding: 16px;
+  font-size: 1.2rem; /* 버튼 크기 확대 */
   font-weight: 600;
   color: #fff;
   background: #28A745;
@@ -106,17 +81,35 @@ button[type="submit"] {
   cursor: pointer;
   transition: background 0.3s;
 }
-button[type="submit"]:hover:not(:disabled) {
-  background: #218838;
-}
-button[type="submit"]:disabled {
-  background: #888;
-  cursor: not-allowed;
-}
 
+button[type="submit"]:hover { background: #218838; }
+button[type="submit"]:disabled { background: #888; cursor: not-allowed; }
 .result {
   margin-top: 16px;
   font-size: 1rem;
   color: #333;
   min-height: 2em;
+}
+
+/* 모바일 전용 */
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    max-width: 80%;
+    padding: 20px;
+    margin-top: 5px;
+  }
+  input[type="text"], input[type="number"] {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  .room-buttons button,
+  .difficulty-buttons button {
+    font-size: 1rem;
+    padding: 6px 0;
+  }
+  button[type="submit"] {
+    padding: 12px;
+    font-size: 1rem;
+  }
 }
