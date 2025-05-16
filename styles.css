@@ -1,191 +1,154 @@
 /* 공통 스타일 */
 body {
-  margin: 0;
-  padding: 0;
-  background: url('jumpingbattle_character_bg.jpg') no-repeat top center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('jumpingbattle_character_bg.jpg') no-repeat top center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
   }
-  
-  /* 상단 고정 컨테이너 */
   .container {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.95);
-  padding: 30px;
-  margin-top: 10px;
-  border-radius: 12px;
-  width: 95%;
-  max-width: 600px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    margin-top: 10px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1;
   }
-  
-  /* 폼 필드 */
   .field,
   .field-group {
-  margin-bottom: 16px;
+    margin-bottom: 16px;
   }
-  
   label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #333;
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
   }
-  
   label .note {
-  color: #d32f2f;
-  font-style: italic;
+    color: #d32f2f;
+    font-style: italic;
   }
-  
   input[type="text"],
   input[type="number"] {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
   }
-  
-  .field-group {
-  display: flex;
-  gap: 4%;
-  }
-  
-  .field-group .half {
-  width: 48%;
-  }
-  
-  /* 버튼 그룹 */
+  .field-group { display: flex; gap: 4%; }
+  .field-group .half { width: 48%; }
   .room-buttons,
   .difficulty-buttons {
-  display: flex;
-  gap: 8px;
+    display: flex;
+    gap: 8px;
   }
-  
   .room-buttons button,
   .difficulty-buttons button {
-  flex: 1;
-  font-size: 1.1rem;
-  padding: 8px 0;
-  background: #fff;
-  border: 2px solid #007ACC;
-  border-radius: 6px;
-  font-weight: 600;
-  color: #007ACC;
-  cursor: pointer;
-  transition: background 0.2s;
+    flex: 1;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    background: #fff;
+    border: 2px solid #007ACC;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #007ACC;
+    cursor: pointer;
+    transition: background 0.2s;
   }
-  
   .room-buttons button:hover:not(:disabled),
   .difficulty-buttons button:hover:not(:disabled) {
-  background: #e6f0fa;
+    background: #e6f0fa;
   }
-  
   .room-buttons button.selected,
   .difficulty-buttons button.selected {
-  background: #007ACC;
-  color: #fff;
+    background: #007ACC;
+    color: #fff;
   }
-  
   .room-buttons button:disabled,
   .difficulty-buttons button:disabled {
-  background: #f5f5f5;
-  border-color: #ccc;
-  color: #aaa;
-  cursor: not-allowed;
+    background: #f5f5f5;
+    border-color: #ccc;
+    color: #aaa;
+    cursor: not-allowed;
   }
-  
-  /* 전송 버튼 */
   button[type="submit"] {
-  width: 100%;
-  padding: 16px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
-  background: #28A745;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background: #28A745;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+  }
+  button[type="submit"]:hover:not(:disabled) { background: #218838; }
+  button[type="submit"]:disabled { background: #888; cursor: not-allowed; }
+  
+  /* 네온 테두리 애니메이션 */
+  button[type="submit"]::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #f0f, #0ff, #f0f, #0ff);
+    background-size: 400%;
+    border-radius: 8px;
+    z-index: -1;
+    animation: neon-border 20s linear infinite;
   }
   
-  button[type="submit"]:hover:not(:disabled) {
-  background: #218838;
+  @keyframes neon-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-  
-  button[type="submit"]:disabled {
-  background: #888;
-  cursor: not-allowed;
-  }
-  
-  /* 전기 애니메이션 테두리 */
-  button[type="submit"]::after {
-  content: "";
-  position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
-  border: 2px solid #0ff;
-  pointer-events: none;
-  opacity: 1;
-  box-shadow: 0 0 5px #0ff;
-  animation: electric-border 1.2s infinite ease-in-out;
-  z-index: 1;
-  }
-  
-  @keyframes electric-border {
-  0%, 100% {
-  box-shadow: 0 0 5px #0ff;
-  }
-  20% {
-  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
-  }
-  40% {
-  box-shadow: 0 0 10px #08f, 0 0 20px #08f;
-  }
-  60% {
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-  }
-  }
-  
-  /* 결과 메시지 */
+  button[type="submit"]:hover:not(:disabled) { background: #218838; }
+  button[type="submit"]:disabled { background: #888; cursor: not-allowed; }
   .result {
-  margin-top: 16px;
-  font-size: 1rem;
-  color: #333;
-  min-height: 2em;
+    margin-top: 16px;
+    font-size: 1rem;
+    color: #333;
+    min-height: 2em;
   }
   
-  /* 모바일 전용 (<=600px) */
+  /* 모바일 전용 */
   @media (max-width: 600px) {
-  .container {
-  width: 100%;
-  max-width: 100%;
-  padding: 20px;
-  margin-top: 5px;
-  }
-  input[type="text"],
-  input[type="number"] {
-  font-size: 1rem;
-  padding: 10px;
-  }
-  .room-buttons button,
-  .difficulty-buttons button {
-  font-size: 1rem;
-  padding: 6px 0;
-  }
-  button[type="submit"] {
-  padding: 12px;
-  font-size: 1rem;
-  }
+    .container {
+      width: 100%;
+      max-width: 90%;
+      padding: 20px;
+      margin-top: 5px;
+    }
+    input[type="text"], input[type="number"] {
+      font-size: 1rem;
+      padding: 10px;
+    }
+    .room-buttons button,
+    .difficulty-buttons button {
+      font-size: 1rem;
+      padding: 6px 0;
+    }
+    button[type="submit"] {
+      padding: 12px;
+      font-size: 1rem;
+    }
   }
